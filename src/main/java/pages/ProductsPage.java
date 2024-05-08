@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utils.LocatorsConstants;
 
+import java.util.List;
+
 public class ProductsPage extends BasePage {
     public static void searchForItem(By item, BasePage basePage) {
-        basePage.waitUntilClickable(item);
+        waitUntilClickable(item);
         basePage.driver.findElement(item).sendKeys("Store");
         basePage.driver.findElement(item).submit();
     }
@@ -19,6 +21,10 @@ public class ProductsPage extends BasePage {
         } else {
             throw new IllegalArgumentException("Invalid index provided: " + index);
         }
+    }
+
+    public static List<WebElement> FindElementListByLocator(By locator, BasePage basePage){
+        return basePage.driver.findElements(locator);
     }
 
 }

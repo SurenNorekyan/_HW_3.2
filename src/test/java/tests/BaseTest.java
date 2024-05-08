@@ -7,7 +7,7 @@ import utils.WebDriverFactory;
 public class BaseTest {
     @BeforeClass
     public void setup() {
-        WebDriverFactory.getInstance().getDriver().get("https://dalma.am/");
+        WebDriverFactory.getInstance().getDriver().get("https://eldorado.am/");
     }
 
     @AfterClass

@@ -1,18 +1,23 @@
 package utils;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.URL;
 
 public class WebDriverFactory {
-    private static WebDriverFactory instance = new WebDriverFactory();
+    private static final WebDriverFactory instance = new WebDriverFactory();
     private WebDriver driver;
 
     private WebDriverFactory() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver();
+        try {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("browserName", "chrome");
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static WebDriverFactory getInstance() {

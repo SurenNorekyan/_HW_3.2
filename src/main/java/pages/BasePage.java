@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public abstract class BasePage {
     public WebDriver driver;
-    protected WebDriverWait wait;
+    protected static WebDriverWait wait;
 
     public BasePage() {
         this.driver = WebDriverFactory.getInstance().getDriver();
@@ -25,7 +25,7 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public WebElement waitUntilClickable(By locator) {
+    public static WebElement waitUntilClickable(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -33,8 +33,13 @@ public abstract class BasePage {
         driver.get(url);
     }
 
-    protected void click(By locator) {
+    protected static void waitAndClick(By locator) {
         WebElement element = waitUntilClickable(locator);
+        element.click();
+    }
+
+    protected void click(By locator) {
+        WebElement element = this.driver.findElement(locator);
         element.click();
     }
 
