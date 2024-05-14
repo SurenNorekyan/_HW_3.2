@@ -1,9 +1,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite1">
     <test name="Test1">
-        <parameter name="productName" value="Headphone"/>
+        <parameter name="productName" value="ipad"/>
         <classes>
-            <class name="tests.SearchAndSortTest"/>
+            <class name="tests.SearchAndSortTest">
+                <methods>
+                    <include name="b_searchForProduct"/>
+                    <include name="c_verifySortingHighToLow"/>
+                    <include name="b_searchForProduct"/>
+                </methods>
+            </class>
+            <class name="tests.AddToCartTest">
+                <methods>
+                    <include name="a_addProductsToCart"/>
+                    <include name="b_verifyProducts"/>
+                    <include name="c_removeFromCart"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

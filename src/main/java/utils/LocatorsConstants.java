@@ -28,7 +28,7 @@ public class LocatorsConstants {
 
     public static final By SUBMENU_BUTTON = By.cssSelector("ul.catalog_menu > li > a.submenu_btn");
     public static final By FILTER_ITEM = By.cssSelector("div.filter_inner > div.filter_block");
-    public static final By OPTIONS_LIST = By.cssSelector("div.options_list > ol.items > li.item");
+    public static final By OPTIONS_LIST = By.cssSelector("div.options_list > ol.items > li.item > a");
     public static final By PRICE_LIMITS = By.cssSelector("div.options_list > ul.price_limits > li");
     public static final By FILTER_SUBMIT_BUTTON = By.cssSelector("div.options_list > button");
     public static final By INPUT_FROM = By.cssSelector("input.price_from");
@@ -36,4 +36,5 @@ public class LocatorsConstants {
 
     public static final By FILTER_PRODUCT_PRICE = By.cssSelector("span[data-price-type=\"finalPrice\"] > span.price");
     public static final By FILTER_PRODUCT_TITLE = By.cssSelector("div.info_block > a.product_name");
+    public static final By FILTER_VALUE = By.cssSelector("span.filter-value");
 }

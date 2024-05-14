@@ -19,23 +19,21 @@ public class SearchAndSortTest extends BaseTest{
         Assert.assertFalse(productsPage.isSearchButtonEnabled(), AssertionMessages.BUTTON_NOT_DISABLED);
     }
     @Test
-    @Parameters("productName")
     public void a_searchInvalidProduct() {
-        String productName = "asdzxc";
-        ProductsPage productsPage = homePage.searchForProduct(productName);
-        Assert.assertTrue(basePage.isAt(productsPage.generateSearchResultUrl(productName)), AssertionMessages.INVALID_URL);
-        Assert.assertTrue(productsPage.getSearchResultText().toLowerCase().contains(productName.toLowerCase()), AssertionMessages.TEXT_MISMATCH);
+        String invalidProductName = "asdzxc";
+        ProductsPage productsPage = homePage.searchForProduct(invalidProductName);
+        Assert.assertTrue(basePage.isAt(productsPage.generateSearchResultUrl(invalidProductName)), AssertionMessages.INVALID_URL);
+        Assert.assertTrue(productsPage.getSearchResultText().toLowerCase().contains(invalidProductName.toLowerCase()), AssertionMessages.TEXT_MISMATCH);
         Assert.assertFalse(productsPage.getNoSearchResultText().isEmpty(), AssertionMessages.EMPTY_TEXT);
     }
 
     @Test
     @Parameters("productName")
-    public void b_searchForProduct() {
+    public void b_searchForProduct(String productName) {
         homePage.navigateToHomePage();
-        String productName = "ipad";
         ProductsPage productsPage = homePage.searchForProduct(productName);
         Assert.assertTrue(basePage.isAt(productsPage.generateSearchResultUrl(productName)), AssertionMessages.INVALID_URL);
-        for(int i = 0; i <= productsPage.getProductCount() - 20; i++) {
+        for(int i = 0; i <= productsPage.getProductCount(); i++) {
             Assert.assertTrue(productsPage.getProductTitle(i).toLowerCase().contains(productName.toLowerCase()));
             Assert.assertFalse(productsPage.getProductPrice(i).isEmpty());
         }
@@ -44,9 +42,8 @@ public class SearchAndSortTest extends BaseTest{
 
     @Test
     @Parameters("productName")
-    public void c_verifySortingHighToLow() {
+    public void c_verifySortingHighToLow(String productName) {
         homePage.navigateToHomePage();
-        String productName = "ipad";
         ProductsPage productsPage = homePage.searchForProduct(productName);
         Assert.assertTrue(basePage.isAt(productsPage.generateSearchResultUrl(productName)), AssertionMessages.INVALID_URL);
         productsPage.clickOnSortButton();

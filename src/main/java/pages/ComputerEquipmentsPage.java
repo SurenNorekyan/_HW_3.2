@@ -18,11 +18,12 @@ public class ComputerEquipmentsPage extends BasePage {
         producerType.click();
         Thread.sleep(1000);
         waitForElementToBeVisible(LocatorsConstants.OPTIONS_LIST);
-        WebElement secondOption = producerType.findElements(LocatorsConstants.OPTIONS_LIST).get(index);
-        secondOption.click();
+        WebElement option = producerType.findElements(LocatorsConstants.OPTIONS_LIST).get(index);
+        option.click();
+
     }
 
-    public void sortByPriceRange(String firstPrice, String secondPrice) throws InterruptedException {
+    public void sortByPriceRange(String firstPrice, String secondPrice) {
         WebElement priceRangeBlock = getByIndex(LocatorsConstants.FILTER_ITEM, 4);
         priceRangeBlock.click();
 
@@ -44,6 +45,9 @@ public class ComputerEquipmentsPage extends BasePage {
     }
     public String getProductTitle(int index){
         return driver.findElements(LocatorsConstants.FILTER_PRODUCT_TITLE).get(index).getText();
+    }
+    public String getProductProducer(){
+        return driver.findElement(LocatorsConstants.FILTER_VALUE).getText();
     }
 
     public String getProductPrice(int index){

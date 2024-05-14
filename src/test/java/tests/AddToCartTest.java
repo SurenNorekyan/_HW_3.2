@@ -19,9 +19,8 @@ public class AddToCartTest extends BaseTest{
 
     @Test
     @Parameters("productName")
-    public void a_addProductsToCart() throws InterruptedException {
+    public void a_addProductsToCart(String productName) throws InterruptedException {
         homePage.navigateToHomePage();
-        String productName = "ipad";
         ProductsPage productsPage = homePage.searchForProduct(productName);
 
         JSONArray productsArray = new JSONArray();
@@ -53,9 +52,8 @@ public class AddToCartTest extends BaseTest{
 
     @Test
     @Parameters("productName")
-    public void b_verifyProducts() throws IOException, ParseException {
+    public void b_verifyProducts(String productName) throws IOException, ParseException {
         homePage.navigateToHomePage();
-        String productName = "ipad";
         ProductsPage productsPage = homePage.searchForProduct(productName);
         SelectedProductPage selectedProductPage = productsPage.selectStoreByIndex(0);
         CartPage cartPage = selectedProductPage.clickToBasket();
@@ -73,9 +71,8 @@ public class AddToCartTest extends BaseTest{
 
     @Test
     @Parameters("productName")
-    public void c_removeFromCart() {
+    public void c_removeFromCart(String productName) {
         homePage.navigateToHomePage();
-        String productName = "ipad";
         ProductsPage productsPage = homePage.searchForProduct(productName);
         SelectedProductPage selectedProductPage = productsPage.selectStoreByIndex(0);
         CartPage cartPage = selectedProductPage.clickToBasket();
