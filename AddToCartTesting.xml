@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite2">
+    <test name="Test2">
+        <parameter name="productName" value="ipad"/>
+        <classes>
+            <class name="tests.AddToCartTest">
+                <methods>
+                    <include name="a_addProductsToCart"/>
+                    <include name="b_verifyProducts"/>
+                    <include name="c_removeFromCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

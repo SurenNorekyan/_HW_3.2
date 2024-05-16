@@ -2,19 +2,13 @@
 <suite name="Suite1">
     <test name="Test1">
         <parameter name="productName" value="ipad"/>
+        <parameter name="invalidProductName" value="invalidProduct"/>
         <classes>
             <class name="tests.SearchAndSortTest">
                 <methods>
-                    <include name="b_searchForProduct"/>
+                    <include name="a_searchInvalidProduct"/>
                     <include name="c_verifySortingHighToLow"/>
                     <include name="b_searchForProduct"/>
-                </methods>
-            </class>
-            <class name="tests.AddToCartTest">
-                <methods>
-                    <include name="a_addProductsToCart"/>
-                    <include name="b_verifyProducts"/>
-                    <include name="c_removeFromCart"/>
                 </methods>
             </class>
         </classes>

@@ -19,8 +19,8 @@ public class SearchAndSortTest extends BaseTest{
         Assert.assertFalse(productsPage.isSearchButtonEnabled(), AssertionMessages.BUTTON_NOT_DISABLED);
     }
     @Test
-    public void a_searchInvalidProduct() {
-        String invalidProductName = "asdzxc";
+    @Parameters("invalidProductName")
+    public void a_searchInvalidProduct(String invalidProductName) {
         ProductsPage productsPage = homePage.searchForProduct(invalidProductName);
         Assert.assertTrue(basePage.isAt(productsPage.generateSearchResultUrl(invalidProductName)), AssertionMessages.INVALID_URL);
         Assert.assertTrue(productsPage.getSearchResultText().toLowerCase().contains(invalidProductName.toLowerCase()), AssertionMessages.TEXT_MISMATCH);
